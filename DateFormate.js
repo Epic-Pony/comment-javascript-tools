@@ -67,3 +67,34 @@ export const exportDate = (keyword,n=7) => {
             return { startTime: `${years}/${months}/${day} ${hour}:${mins}:${seconds}`, endTime: `${endYears}/${endMonths}/${endDays} ${endHour}:${endMins}:${endSeconds}` }
     }
 }
+//动态生成uuid
+function  uuid() {
+	var temp_url = URL.createObjectURL(new Blob());
+	var uuid = temp_url.toString();
+	URL.revokeObjectURL(temp_url);
+	return  uuid.substr(uuid.lastIndexOf("/")+1)
+}
+
+
+// String 构造函数的原型对象的一个方法。
+    String.prototype.IsPicture = function()
+    {
+        //判断是否是图片 - strFilter必须是小写列举
+        var strFilter=".jpeg|.gif|.jpg|.png|.bmp|.pic|"
+        if(this.indexOf(".")>-1)
+        {
+            var p = this.lastIndexOf(".");
+            //alert(p);
+            //alert(this.length);
+            var strPostfix=this.substring(p,this.length) + '|';        
+            strPostfix = strPostfix.toLowerCase();
+            //alert(strPostfix);
+            if(strFilter.indexOf(strPostfix)>-1)
+            {
+                //alert("True");
+                return true;
+            }
+        }        
+        //alert('False');
+        return false;            
+    }
